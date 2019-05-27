@@ -1,10 +1,14 @@
 package com.nfl.guiceTest;
 
+import java.util.Map.Entry;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.google.inject.Binding;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Key;
 import com.nfl.guiceTest.service.AppService;
 import com.nfl.guiceTest.service.BlogService;
 import com.nfl.guiceTest.service.impl.BlogServiceImpl;
@@ -52,6 +56,10 @@ public class MyAppTest {
 
 	@Test
 	public void testMyApp() {
+		for (Entry<Key<?>, Binding<?>> e : injector.getAllBindings().entrySet()) {
+			System.out.println("K：" + e.getKey());
+			System.out.println("V：" + e.getValue());
+		}
 		// 默认是原型模式
 		AppService appServiceImpl = injector.getInstance(AppService.class);
 		AppService appServiceImpl2 = injector.getInstance(AppService.class);
