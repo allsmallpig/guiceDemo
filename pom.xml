@@ -13,10 +13,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- 4.0以上版本多依赖了两个jar，测试的话暂时使用3.0就可以了，等需要高级功能时可以升级 -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>4.2.2</version>
+			<version>3.0</version>
 		</dependency>
 	</dependencies>
 
