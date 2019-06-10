@@ -1,0 +1,7 @@
+接口：com.google.inject.Binder
+注释：
+Collects configuration information (primarily bindings) which will be used to create an Injector. 
+Guice provides this object to your application's Module implementors so they may each contribute their own bindings and other registrations. 
+翻译：
+收集将用于创建注入器的配置信息（主要是绑定）。
+Guice将此对象提供给应用程序的模块实现者，以便他们各自贡献自己的绑定和其他注册。

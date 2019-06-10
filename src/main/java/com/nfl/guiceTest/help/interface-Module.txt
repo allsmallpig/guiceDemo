@@ -1,0 +1,13 @@
+接口：com.google.inject.Module
+注释：
+A module contributes configuration information, typically interface bindings, which will be used to create an Injector. 
+A Guice-based application is ultimately composed of little more than a set of Modules and some bootstrapping code. 
+Your Module classes can use a more streamlined syntax by extending AbstractModule rather than implementing this interface directly. 
+In addition to the bindings configured via configure, bindings will be created for all methods annotated with @Provides.
+Use scope and binding annotations on these methods to configure the bindings.
+翻译：
+模块提供配置信息，通常是接口绑定，用于创建注入器。
+基于Guice的应用程序最终只由一组模块和一些引导代码组成。
+模块类可以通过扩展AbstractModule而不是直接实现此接口来使用更精简的语法。
+除了通过configure方法配置绑定外，还将会为所有被@provides标注的方法创建绑定。
+在这些方法上使用范围和绑定注释来配置绑定。
