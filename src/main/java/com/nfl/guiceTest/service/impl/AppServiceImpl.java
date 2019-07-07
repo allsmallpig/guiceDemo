@@ -14,40 +14,40 @@ import com.nfl.guiceTest.service.UserService;
  */
 public class AppServiceImpl implements AppService {
 
-	private UserService userService;
+    private UserService userService;
 
-	private LogService logService;
+    private LogService logService;
 
-	@Inject
-	@Named("myPort")
-	private String port;
+    @Inject
+    @Named("myPort")
+    private String port;
 
-	private int age;
+    private int age;
 
-	@Inject
-	public void setAge(@Named("myAge") int age) {
-		this.age = age;
-	}
+    @Inject
+    public void setAge(@Named("myAge") int age) {
+        this.age = age;
+    }
 
-	private int height;
+    private int height;
 
-	@Inject
-	public void setHeight(@Named("myHeight") int height) {
-		this.height = height;
-	}
+    @Inject
+    public void setHeight(@Named("myHeight") int height) {
+        this.height = height;
+    }
 
-	@Inject
-	public AppServiceImpl(UserService userService, LogService logService) {
-		this.userService = userService;
-		this.logService = logService;
-	}
+    @Inject
+    public AppServiceImpl(UserService userService, LogService logService) {
+        this.userService = userService;
+        this.logService = logService;
+    }
 
-	@Override
-	public void work() {
-		System.out.println("端口：" + port);
-		System.out.println("年龄：" + age);
-		System.out.println("身高：" + height);
-		userService.process();
-		logService.log("程序正常运行");
-	}
+    @Override
+    public void work() {
+        System.out.println("端口：" + this.port);
+        System.out.println("年龄：" + this.age);
+        System.out.println("身高：" + this.height);
+        this.userService.process();
+        this.logService.log("程序正常运行");
+    }
 }

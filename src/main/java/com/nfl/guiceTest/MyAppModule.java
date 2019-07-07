@@ -30,13 +30,13 @@ import com.nfl.guiceTest.service.impl.UserServiceImpl;
  */
 public class MyAppModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bind(LogService.class).to(LogServiceImpl.class);
-		bind(UserService.class).to(UserServiceImpl.class);
-		bind(AppService.class).to(AppServiceImpl.class);
-		bind(String.class).annotatedWith(Names.named("myPort")).toInstance("8080");
-		bind(int.class).annotatedWith(Names.named("myAge")).toInstance(18);
-		bind(Integer.class).annotatedWith(Names.named("myHeight")).toInstance(199);
-	}
+    @Override
+    protected void configure() {
+        bind(LogService.class).to(LogServiceImpl.class);
+        bind(UserService.class).to(UserServiceImpl.class);
+        bind(AppService.class).to(AppServiceImpl.class);
+        bind(String.class).annotatedWith(Names.named("myPort")).toInstance("8080");
+        bind(int.class).annotatedWith(Names.named("myAge")).toInstance(18);
+        bind(Integer.class).annotatedWith(Names.named("myHeight")).toInstance(199);
+    }
 }

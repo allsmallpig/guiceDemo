@@ -9,24 +9,24 @@ import com.nfl.guiceTest.service.UserService;
 @Singleton
 public class UserServiceImpl implements UserService {
 
-	private LogService logService;
+    private LogService logService;
 
-	private LogService logService2;
+    private LogService logService2;
 
-	@Inject
-	public UserServiceImpl(LogService logService) {
-		this.logService = logService;
-	}
+    @Inject
+    public UserServiceImpl(LogService logService) {
+        this.logService = logService;
+    }
 
-	@Inject
-	public void aa(LogService logService) {
-		this.logService2 = logService;
-	}
+    @Inject
+    public void aa(LogService logService1) {
+        this.logService2 = logService1;
+    }
 
-	@Override
-	public void process() {
-		System.out.println(logService);
-		System.out.println(logService2);
-		System.out.println("我需要做一些业务逻辑");
-	}
+    @Override
+    public void process() {
+        System.out.println(this.logService);
+        System.out.println(this.logService2);
+        System.out.println("我需要做一些业务逻辑");
+    }
 }
