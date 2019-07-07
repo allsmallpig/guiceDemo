@@ -30,7 +30,7 @@ import com.nfl.guiceTest.service.impl.BlogServiceImpl;
  * Module：一组Binder
  * </p>
  * <p>
- * Provider：bean的提供者
+ * Provider：bean的提供者（类似spring中的FactoryBean，用于获取bean）
  * </p>
  * <p>
  * Key：Binder中对应一个Provider
@@ -47,28 +47,28 @@ import com.nfl.guiceTest.service.impl.BlogServiceImpl;
  */
 public class MyAppTest {
 
-	private static Injector injector;
+    private static Injector injector;
 
-	@BeforeClass
-	public static void init() {
-		injector = Guice.createInjector(new MyAppModule());
-	}
+    @BeforeClass
+    public static void init() {
+        injector = Guice.createInjector(new MyAppModule());
+    }
 
-	@Test
-	public void testMyApp() {
-		for (Entry<Key<?>, Binding<?>> e : injector.getAllBindings().entrySet()) {
-			System.out.println("K：" + e.getKey());
-			System.out.println("V：" + e.getValue());
-		}
-		// 默认是原型模式
-		AppService appServiceImpl = injector.getInstance(AppService.class);
-		AppService appServiceImpl2 = injector.getInstance(AppService.class);
-		System.out.println(appServiceImpl == appServiceImpl2);
-		appServiceImpl.work();
-		// 用一个已经有的实例，但依赖的对象为null，这时可以用injector注入依赖对象，但这个实例不会有绑定关系，
-		// 所以如果其他有需要依赖这个实例的也无法注入这个实例
-		BlogService blogService = new BlogServiceImpl();
-		injector.injectMembers(blogService);
-		blogService.add();
-	}
+    @Test
+    public void testMyApp() {
+        for (Entry<Key<?>, Binding<?>> e : injector.getAllBindings().entrySet()) {
+            System.out.println("K：" + e.getKey());
+            System.out.println("V：" + e.getValue());
+        }
+        // 默认是原型模式
+        AppService appServiceImpl = injector.getInstance(AppService.class);
+        AppService appServiceImpl2 = injector.getInstance(AppService.class);
+        System.out.println(appServiceImpl == appServiceImpl2);
+        appServiceImpl.work();
+        // 用一个已经有的实例，但依赖的对象为null，这时可以用injector注入依赖对象，但这个实例不会有绑定关系，
+        // 所以如果其他有需要依赖这个实例的也无法注入这个实例
+        BlogService blogService = new BlogServiceImpl();
+        injector.injectMembers(blogService);
+        blogService.add();
+    }
 }
